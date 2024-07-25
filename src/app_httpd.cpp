@@ -1320,10 +1320,21 @@ void startCameraServer() {
   }
 }
 
+
+
+void ledcAttach(int pin, uint32_t frequency, uint8_t resolution) {
+    const uint8_t LED_CHANNEL = 0; // Escolha um canal PWM (0 a 15)
+
+    // Configura o canal PWM
+    ledcSetup(LED_CHANNEL, frequency, resolution);
+
+    // Associa o pino ao canal PWM
+    ledcAttachPin(pin, LED_CHANNEL);
+}
+
 void setupLedFlash(int pin) {
 #if CONFIG_LED_ILLUMINATOR_ENABLED
-  ledcSetup(0, 5000, 8); // Configura o canal LEDC com a frequência e resolução desejada
-  ledcAttachPin(pin, 0); // Anexa o pino ao canal LEDC
+  ledcAttach(pin, 5000, 8);
 #else
   log_i("LED flash is disabled -> CONFIG_LED_ILLUMINATOR_ENABLED = 0");
 #endif
