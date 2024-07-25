@@ -40,8 +40,8 @@ void loop() {
 #define CAMERA_MODEL_AI_THINKER // Has PSRAM
 #include "camera_pins.h"
 
-const char *ssid = "iPhone";
-const char *password = "123456789";
+const char *ssid = "brisa-2033885";
+const char *password = "myd8rknx";
 
 void startCameraServer();
 void setupLedFlash(int pin);
